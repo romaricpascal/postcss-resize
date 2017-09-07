@@ -22,6 +22,7 @@
     "calipers-gif": "^2.0.0",
     "calipers-jpeg": "^2.0.0",
     "calipers-png": "^2.0.0",
+    "lodash.defaults": "^4.2.0",
     "postcss": "^6.0.1",
     "sharp": "^0.18.2"
   },
@@ -30,7 +31,8 @@
     "eslint": "^3.19.0",
     "eslint-config-postcss": "^2.0.2",
     "jest": "^20.0.0",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "tmp-promise": "^1.0.3"
   },
   "scripts": {
     "test": "jest && eslint *.js",
