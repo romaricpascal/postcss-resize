@@ -3,9 +3,9 @@
 }
 
 .background {
-  background: url('asset.400x300.png');
+  background: url('asset@0.25x.png');
 }
 
 .backgroundImage {
-  background-image: url('asset.200x150.png');
+  background-image: url('asset@0.125x.png');
 }

@@ -7,7 +7,6 @@ describe('createResizeOps', function () {
     }];
 
     var ops = images.reduce(createResizeOps, []);
-    console.log(ops);
     expect(ops[0].basename).toEqual('asset');
     expect(ops[0].format).toEqual('png');
     expect(ops[0].resize).toEqual('0.5x');

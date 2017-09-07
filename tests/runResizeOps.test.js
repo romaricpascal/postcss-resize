@@ -7,13 +7,6 @@ var DEST_DIR = __dirname + '/dest';
 describe('runResizeOp', function () {
 
   beforeAll(function () {
-    return new Promise(function (resolve, reject) {
-      rimraf(DEST_DIR + '/*.png', function (err) {
-        if (err) reject(err);
-        resolve();
-      });
-    });
-
   })
 
   it('Resizes the image', function () {

@@ -8,13 +8,13 @@ describe('getImages', function () {
 
   it('Extracts image URLs from background-image properties', function () {
     expect(images.some(function (image) {
-      return image.url === 'asset.200x150.png';
+      return image.url === 'asset@0.125x.png';
     })).toBe(true);
   });
 
   it('Extracts image URLs from background properties', function () {
     expect(images.some(function (image) {
-      return image.url === 'asset.400x300.png';
+      return image.url === 'asset@0.25x.png';
     })).toBe(true);
   });
 });
