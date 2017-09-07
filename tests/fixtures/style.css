@@ -1,0 +1,11 @@
+.ignored {
+  background: red;
+}
+
+.background {
+  background: url('asset.400x300.png');
+}
+
+.backgroundImage {
+  background-image: url('asset.200x150.png');
+}

@@ -18,15 +18,23 @@
   },
   "homepage": "https://github.com/rhumaric/postcss-resize",
   "dependencies": {
-    "postcss": "^6.0.1"
+    "calipers": "^2.0.0",
+    "calipers-gif": "^2.0.0",
+    "calipers-jpeg": "^2.0.0",
+    "calipers-png": "^2.0.0",
+    "postcss": "^6.0.1",
+    "sharp": "^0.18.2"
   },
   "devDependencies": {
+    "chokidar-cli": "^1.2.0",
     "eslint": "^3.19.0",
     "eslint-config-postcss": "^2.0.2",
-    "jest": "^20.0.0"
+    "jest": "^20.0.0",
+    "rimraf": "^2.6.1"
   },
   "scripts": {
-    "test": "jest && eslint *.js"
+    "test": "jest && eslint *.js",
+    "dev:test": "chokidar 'tests/**/*.js' 'lib/*' -c 'jest' --initial "
   },
   "eslintConfig": {
     "extends": "eslint-config-postcss/es5",
