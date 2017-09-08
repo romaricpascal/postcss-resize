@@ -35,13 +35,7 @@
     "tmp-promise": "^1.0.3"
   },
   "scripts": {
-    "test": "jest && eslint *.js",
+    "test": "jest && eslint lib/*.js *.js",
     "dev:test": "chokidar 'tests/**/*.js' 'index.js' 'lib/*' -c 'jest' --initial "
-  },
-  "eslintConfig": {
-    "extends": "eslint-config-postcss/es5",
-    "env": {
-      "jest": true
-    }
   }
 }
