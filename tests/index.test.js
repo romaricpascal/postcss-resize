@@ -3,6 +3,7 @@ var path = require('path');
 var postcss = require('postcss');
 var withTmpDir = require('./withTmpDir');
 var plugin = require('../index.js');
+var getModifiedDate = require('../lib/getModifiedDate');
 var calipers = require('../vendor/calipers');
 var SRC_DIR = path.join(__dirname, 'fixtures');
 var DEST_DIR = path.join(__dirname, 'dest');
@@ -55,6 +56,31 @@ describe('postcss-resize', function () {
             });
         })
         );
+
+    it('Does not process assets when existing target is newer than source',
+        withTmpDir({ template: DIR_TEMPLATE }, function (dir) {
+            var opts = {
+                imagesSrc: SRC_DIR,
+                imagesDest: dir.path
+            };
+
+            var targetFile = path.join(dir.path, 'asset@0.25x.png');
+            console.log('First run');
+            return run(opts).then(() => {
+                return getModifiedDate(targetFile).then((dateAfterFirstRun) => {
+                    console.log('First date', dateAfterFirstRun);
+                    console.log('Second run');
+                    return run(opts).then(() => {
+                        return getModifiedDate(targetFile)
+                        .then((dateAfterSecondRun) => {
+                            expect(dateAfterSecondRun)
+                            .toEqual(dateAfterFirstRun);
+                        });
+                    });
+                });
+            });
+        })
+    );
 
     describe('opts.filter', function () {
 

@@ -1,6 +1,6 @@
 var getImages = require('../lib/getImage');
 
-describe('getImages', function () {
+describe.skip('getImages', function () {
     var fs = require('fs');
     var css = fs.readFileSync(`${__dirname}/fixtures/style.css`, {
         encoding: 'utf8'
