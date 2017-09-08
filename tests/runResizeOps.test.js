@@ -6,9 +6,6 @@ var SRC_DIR = __dirname + '/fixtures';
 var DEST_DIR = __dirname + '/dest';
 describe('runResizeOp', function () {
 
-  beforeAll(function () {
-  })
-
   it('Resizes the image', function () {
     var op = {
       format: 'png',

@@ -16,12 +16,22 @@ function run(opts) {
   return postcss([plugin(opts)]).process(css);
 }
 
+function checkMeasurements(expectations, dir) {
+  return function (file) {
+    var fullPath = path.join(dir.path, file);
+    return calipers.measure(fullPath)
+      .then(function (measurement) {
+        expect(measurement.pages[0]).toEqual(expectations[file]);
+      });
+  }
+}
+
 describe('postcss-resize', function () {
 
-  it.only('Resizes images provided by URLs',
+  it('Resizes images provided by URLs',
     withTmpDir({template: DIR_TEMPLATE}, function (dir) {
 
-      var expecations = {
+      var expectations = {
         'asset@0.25x.png': {
           width: 200,
           height: 150
@@ -39,14 +49,9 @@ describe('postcss-resize', function () {
 
     return run(opts)
       .then(result => {
-        return Promise.all(Object.keys(expecations).map(function (file) {
-          var fullPath = path.join(dir.path, file);
-          console.log(fullPath);
-          return calipers.measure(fullPath)
-            .then(function (measurement) {
-              expect(measurement.pages[0]).toEqual(expecations[file]);
-            });
-        }));
+        return Promise.all(Object.keys(expectations)
+          .map(checkMeasurements(expectations, dir))
+        );
       });
     })
   );

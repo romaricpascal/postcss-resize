@@ -14,11 +14,11 @@ module.exports = postcss.plugin('postcss-resize', function (opts) {
   // Work with options here
 
   return function (root, result) {
-    getImages(root)
+    return Promise.all(getImages(root)
       .filter(opts.filter)
       .reduce(createResizeOps, [])
       .map(function (op) {
         return runResizeOp(op, opts);
-      });
+      }));
   };
 });

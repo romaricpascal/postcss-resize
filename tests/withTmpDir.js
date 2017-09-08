@@ -1,21 +1,22 @@
 var tmp = require('tmp-promise');
+var rimraf = require('rimraf');
 
 module.exports = function (opts, test) {
   return function () {
-    var dir;
     return tmp
       .dir(opts)
       .then(function (d) {
-        dir = d;
-        return d;
+        return test(d).then(function () {
+          return d;
+        });
       })
-      .then(test)
-      .then(function () {
-        dir.cleanup();
-      })
-      .catch(function (e) {
-        console.log('Working dir for failed test',dir.path);
-        throw e;
+      .then(function (d) {
+        return new Promise(function (resolve, reject) {
+          rimraf(d.path, function (err) {
+            if (err) reject(err);
+            resolve();
+          });
+        });
       });
   }
 }
