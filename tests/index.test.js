@@ -65,11 +65,8 @@ describe('postcss-resize', function () {
             };
 
             var targetFile = path.join(dir.path, 'asset@0.25x.png');
-            console.log('First run');
             return run(opts).then(() => {
                 return getModifiedDate(targetFile).then((dateAfterFirstRun) => {
-                    console.log('First date', dateAfterFirstRun);
-                    console.log('Second run');
                     return run(opts).then(() => {
                         return getModifiedDate(targetFile)
                         .then((dateAfterSecondRun) => {
