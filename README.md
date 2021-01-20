@@ -1,3 +1,5 @@
+> This repository is now [hosted on Gitlab](https://gitlab.com/romaricpascal/postcss-resize). Please head there if you wish to contribute. Thanks 🙂
+
 # PostCSS Resize [![Build Status][ci-img]][ci]
 
 [PostCSS] plugin for generating resized images from full size assets based on the filenames used as background URLs.
